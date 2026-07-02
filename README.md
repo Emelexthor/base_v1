@@ -41,4 +41,16 @@ Acessar o conteúdo padrão do laravel
 
 http://127.0.0.1:800
 ...
+** Como usar o GitHub
+Baixar os arquivo do Git
+...
+git clone -branch <branch_name> <repository_url> .
+...
+verificar a branch
+...
+baixar as atualizações
+...
+git pull
+
+
 
