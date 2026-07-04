@@ -4,5 +4,14 @@
     <h2>Editaro Curso</h2>
 
 
-    <a href="{{ route('courses.index') }}">Listar Cursos</a><br>
+   <form action="{{ route('courses.update', ['course' => $course->id]) }}" method="POST">
+        @csrf
+        @method('PUT')
+
+        <label for="name">Nome:</label><br>
+        <input type="text" name="name"placeholder="Nome do curso" value="{{ $course->name }}"><br>
+
+        <button type="submit">Atualizar</button>
+
+   </form>
 @endsection

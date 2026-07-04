@@ -62,5 +62,6 @@ baixar as atualizações
 ...
 git pull
 
-
+esecutar aas seeder
+php artisan db:seed 
 

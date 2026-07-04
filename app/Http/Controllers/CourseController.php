@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Course;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -11,15 +11,26 @@ class CourseController extends Controller
      */
     public function index()
     {
-        return view('courses.index');
+        //recuperar todos os cursos do banco de dados
+        //$courses = Course::where('id',100)->get();
+         //4courses =Course::paginate(10);
+        $courses = Course::orderBy('id', 'desc')->get();
+
+        return view('courses.index', ['courses'=>$courses]);
     }
 
     /**
      * Exibir os detalhes de um curso específico.
      */
-    public function show()
+
+    //  public function show(Request $request)
+     public function show(Course $course)
     {
-        return view('courses.show');
+        // dd($request->course);
+        // $course = Course::where('id', $request->course)->first();
+
+        // carregar a view de detalhes do curso, passando os dados do curso para a view
+        return view('courses.show',['course'=>$course]);
     }
 
     /**
@@ -33,18 +44,24 @@ class CourseController extends Controller
     /**
      * Salvar um novo curso no banco de dados.
      */
-    public function store()
+    public function store(Request $request)
     {
-        // return view('courses.index');
-        dd("Salvar o curso no banco de dados aqui");
+        // dd($request->name);
+         Course::create([
+            'name'=>$request->name
+         ]);
+         //redirecione o  usuário,  enviar a mensagem de sucesso.
+          return redirect()->route('courses.create')->with('success', 'Curso cadastrado com sucesso!');
+
     }
 
     /**
      * Exibir o formulário para editar um curso.
      */
-    public function edit()
+    public function edit(Course $course)
     {
-        return view('courses.edit');
+
+        return view('courses.edit', ['course'=>$course]);
     }
 
     /**
