@@ -3,18 +3,23 @@
 @section('content')
     <h2>Cadastrar o Curso</h2>
 
-    <a href="{{ route('courses.index') }} ">Listar Cursos</a><br><br>
-     @if (session('success'))
-        <p style="color: #082">{{ session('success') }}</p>
-     @endif
+    <a href="{{ route('course.index') }} ">
+        <button type="button">Listar</button>
+    </a><br><br>
 
-    <form action="{{ route('courses.store') }} " method="POST">
+      <x-alert />
+
+    <form action="{{ route('course.store') }} " method="POST">
         @csrf
         @method('POST')
 
-        <input type="text" name="name" placeholder="Nome do curso" value="{{ old('name') }} " required><br><br>
-        <button type="submit">Cadastrar</button>
+        <label>Nome</label>
+        <input type="text" name="name" id="name"placeholder="Nome do curso" value="{{ old('name') }}" required>
+        <label>Preço</label>
+        <input type="text" name="price" id="price"placeholder="Preço do curso: 2.47" value="{{ old('price') }}"
+            required>
 
+        <button type="submit">Cadastrar</button>
 
     </form>
 @endsection

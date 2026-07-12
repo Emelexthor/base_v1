@@ -13,15 +13,17 @@ class CourseSeeder extends Seeder
     public function run(): void
     {
         //
-        if(!Course::where('name', 'curso de laraavel- t2')->first()) {
+        if(!Course::where('name', 'curso de laraavel- t1')->first()) {
             Course::create([
-                'name' => "curso de laraavel- t2",
+                'name' => "curso de laraavel- t1",
+                'price' => 100.00,
 
             ]);
         }
                 if(!Course::where('name', 'curso de laraavel- t2')->first()) {
             Course::create([
                 'name' => "curso de laraavel- t2",
+                 'price' => 100.90,
 
             ]);
         }
